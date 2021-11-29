@@ -12,12 +12,41 @@ double f(double t, double y){
 
 void exp_euler(std::vector<double> &y, const int &n, double t_start, double t_end, double dt ){
 
-    for(int i=1;i<n;i++){
-
-       y.push_back(y[i-1]+dt*f(t_start+(i-1)*dt,y[i-1]));
-        
-
+    for(auto i{1};i<n;i++){
+       y.push_back(y[i-1]+dt*f(t_start+(i-1)*dt,y[i-1]));       
     }
+}
+
+bool test_ode(){
+    bool test = true;
+    double dt=0.01; // specify the step size here
+    double t_start=0; // initial t
+    double t_end=5; // end of t
+    double y_0=1;   // initial condition y(0) = y_0
+    int n = ((t_end-t_start)/dt)+1;
+
+    std::vector<double> y;
+    y.push_back(y_0);
+    exp_euler(y, n, t_start, t_end, dt);
+
+    std::vector<double> y_ref;
+    y_ref.push_back(exp(-t_start));
+
+    for(auto i{1};i<n;i++){
+        y_ref.push_back(exp((t_start+(i-1)*dt)));
+    }
+
+    auto tol = 1e-6;
+
+    for(auto i{0};i<n;i++){
+        if(abs(y[i]-y_ref[i])<tol){
+            continue;
+        }else{
+            test = false;
+            std::cout<<y[i]<<" "<<y_ref[i]<<std::endl;
+        }
+    }
+    return test;
 }
 
 int main(){
@@ -38,5 +67,10 @@ int main(){
         std::cout<<"y at t = "<<t_start+i*dt<<" is "<<y[i]<<"\n";
     }
 
-
+    auto res = test_ode();
+    if(res){
+        std::cout<<"The solver works fine."<<std::endl;
+    }else{
+        std::cout<<"The solver doesn't work. Check the solver."<<std::endl;
+    }
 }
