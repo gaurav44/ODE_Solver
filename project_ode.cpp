@@ -2,6 +2,7 @@
 #include <cmath>
 #include <vector>
 
+
 //Code for solving the ODE y'(t) = f(t,y)
 
 
@@ -24,7 +25,10 @@ bool test_ode(){
     double t_end=5; // end of t
     double y_0=1;   // initial condition y(0) = y_0
     int n = ((t_end-t_start)/dt)+1;
-
+    std::vector<double> t{};
+    for(int i{0};i<n;i++){
+        t.push_back(t_start+i*dt);
+    }
     std::vector<double> y;
     y.push_back(y_0);
     exp_euler(y, n, t_start, t_end, dt);
@@ -33,7 +37,7 @@ bool test_ode(){
     y_ref.push_back(exp(-t_start));
 
     for(auto i{1};i<n;i++){
-        y_ref.push_back(exp((t_start+(i-1)*dt)));
+        y_ref.push_back(exp(-(t_start+(i-1)*dt)));
     }
 
     auto tol = 1e-6;
@@ -43,7 +47,17 @@ bool test_ode(){
             continue;
         }else{
             test = false;
-            std::cout<<y[i]<<" "<<y_ref[i]<<std::endl;
+        }
+    }
+
+    if(test){
+        std::cout<<"The solver works fine."<<std::endl;
+    }else{
+        std::cout<<"The solver doesn't work. Check the solver......."<<std::endl;
+        std::cout<<"--------------------------------------------------------------------------------------\n"<<std::endl;
+        std::cout<<"t"<<"          "<<"y_calc"<<"           "<<"y_ref\n";
+        for(auto i{0};i<n;i++){
+            std::cout<<t.at(i)<<"          "<<y.at(i)<<"          "<<y_ref.at(i)<<std::endl;
         }
     }
     return test;
@@ -55,22 +69,22 @@ int main(){
     double t_end=5; // end of t
     double y_0=1;   // initial condition y(0) = y_0
     int n = ((t_end-t_start)/dt)+1; // n stores the number of time steps or number of data points
-
+    std::vector<double> t{};
+    for(int i{0};i<n;i++){
+        t.push_back(t_start+i*dt);
+    }
     std::vector<double> y;
     y.push_back(y_0);
     exp_euler(y, n, t_start, t_end, dt); // pass your parameters to the function
 
     std::cout<<"The value of n is "<<n<<"\n"<<"\n";
-    std::cout<<"The solution vector obtained from explicit Euler is  "<<"\n"<<"\n";
+    std::cout<<"The solution vector obtained from explicit Euler is............."<<"\n"<<"\n";
+    std::cout<<"--------------------------------------------------------------------------\n";
 
+    std::cout<<"t"<<"          "<<"y"<<"          \n";
     for(int i=0;i<n;i++){
-        std::cout<<"y at t = "<<t_start+i*dt<<" is "<<y[i]<<"\n";
+        std::cout<<t.at(i)<<"          "<<y.at(i)<<"\n";
     }
-
-    auto res = test_ode();
-    if(res){
-        std::cout<<"The solver works fine."<<std::endl;
-    }else{
-        std::cout<<"The solver doesn't work. Check the solver."<<std::endl;
-    }
+    test_ode();
+    
 }
