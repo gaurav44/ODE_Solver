@@ -28,10 +28,10 @@ bool test_ode(){
         // y_ref.push_back(exp(-(t_start+(i-1)*dt)));
     }
 
-    auto tol = 1e-6;
+    double tol = 1e-3;
 
     for(auto i{0};i<n;i++){
-        if(abs(y[i]-y_ref[i])<tol){
+        if(std::abs(y[i]-y_ref[i])<tol){
             continue;
         }else{
             test = false;
@@ -40,12 +40,34 @@ bool test_ode(){
 
     if(test){
         std::cout<<"\nThe solver works fine."<<std::endl;
+        // for(auto i{0};i<n;i++){
+        //     std::cout<<t.at(i)<<"          "<<y.at(i)<<"          "<<y_ref.at(i)<<std::endl;
+        // }
     }else{
-        std::cout<<"The solver doesn't work. Check the solver......."<<std::endl;
+        std::cout<<"The solver isn't within tolerance(1e-3). Check the solver."<<std::endl;
         std::cout<<"--------------------------------------------------------------------------------------\n"<<std::endl;
-        std::cout<<"t"<<"          "<<"y_calc"<<"           "<<"y_ref\n";
+        {std::cout<<std::setw(5)
+             <<"t"
+             <<std::setw(7)
+             <<"|"
+             <<std::setw(15)
+             <<"y_calc"
+             <<std::setw(7)
+             <<"|"
+             <<std::setw(15)
+             <<"y_ref\n";}
         for(auto i{0};i<n;i++){
-            std::cout<<t.at(i)<<"          "<<y.at(i)<<"          "<<y_ref.at(i)<<std::endl;
+            std::cout<<std::setw(5)
+             <<t.at(i)
+             <<std::setw(7)
+             <<"|"
+             <<std::setw(15)
+             <<y.at(i)
+             <<std::setw(7)
+             <<"|"
+             <<std::setw(15)
+             <<y_ref.at(i)
+             <<std::endl;
         }
     }
     return test;
