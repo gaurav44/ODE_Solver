@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <cmath>
 #include <vector>
 #include <iomanip>
@@ -40,7 +41,17 @@ int main(){
                  <<std::setw(15)
                  <<y.at(i)<<"\n";
     }
-    
+
+    std::ofstream time;
+    std::ofstream y_out;
+    time.open("time");
+    y_out.open("y_out");
+    for(int i{0};i<n;i++){
+        time<<t.at(i)<<std::endl;
+        y_out<<y.at(i)<<std::endl;
+    }
+    time.close();
+    y_out.close();
     test_ode();
-    
+    return 0;
 }
