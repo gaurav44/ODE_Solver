@@ -31,7 +31,7 @@ bool test_ode(){
     auto tol = 1e-6;
 
     for(auto i{0};i<n;i++){
-        if(abs(y[i]-y_ref[i])<tol){
+        if(std::abs(y[i]-y_ref[i])<tol){
             continue;
         }else{
             test = false;
