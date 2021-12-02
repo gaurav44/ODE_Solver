@@ -52,6 +52,6 @@ int main(){
     }
     time.close();
     y_out.close();
-    test_ode();
+    test_ode(1e-3);
     return 0;
 }

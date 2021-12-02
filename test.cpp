@@ -5,7 +5,7 @@
 #include "euler.cpp"
 #include "test_function.cpp"
 
-bool test_ode(){
+bool test_ode(double tol){
     bool test = true;
     double dt=0.01; // specify the step size here
     double t_start=0; // initial t
@@ -28,7 +28,7 @@ bool test_ode(){
         // y_ref.push_back(exp(-(t_start+(i-1)*dt)));
     }
 
-    double tol = 1e-3;
+    
 
     for(auto i{0};i<n;i++){
         if(std::abs(y[i]-y_ref[i])<tol){
@@ -44,7 +44,7 @@ bool test_ode(){
         //     std::cout<<t.at(i)<<"          "<<y.at(i)<<"          "<<y_ref.at(i)<<std::endl;
         // }
     }else{
-        std::cout<<"The solver isn't within tolerance(1e-3). Check the solver."<<std::endl;
+        std::cout<<"The solver isn't within tolerance "<<tol<<" . Check the solver."<<std::endl;
         std::cout<<"--------------------------------------------------------------------------------------\n"<<std::endl;
         {std::cout<<std::setw(5)
              <<"t"
