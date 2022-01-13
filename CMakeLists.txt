@@ -3,9 +3,9 @@ project(ODE_solver VERSION 0.1.0)
 
 set(CMAKE_CXX_STANDARD 17)
 
-include_directories(src)
+include_directories(${ODE_solver_SOURCE_DIR}/src)
 
-add_subdirectory(src)
-add_subdirectory(test)
-add_subdirectory(lib/googletest)
-add_subdirectory(lib/eigen-3.4-rc1)
+add_subdirectory(${ODE_solver_SOURCE_DIR}/src)
+add_subdirectory(${ODE_solver_SOURCE_DIR}/test)
+add_subdirectory(${ODE_solver_SOURCE_DIR}/lib/googletest)
+add_subdirectory(${ODE_solver_SOURCE_DIR}/lib/eigen-3.4-rc1)
