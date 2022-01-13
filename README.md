@@ -7,7 +7,7 @@ The abstract class has a pure virtual function `void solve()` which is overridde
 Eigen library was used to perform matrix operations.<br />
 Unit Tests were written using the Google Test framework.<br />
 Python script is provided for plotting solution written in file.<br />
-The user needs to download googletest https://github.com/google/googletest and eigen-3.4-rc1 https://eigen.tuxfamily.org/index.php?title=Main_Page libraries and place them in the folder `lib`. The user should have `Cmake` and `make` installed to build /compile, and numpy and matplotlib to plot the solution.<br />
+The user needs to download [googletest](https://github.com/google/googletest) and [eigen-3.4-rc1](https://eigen.tuxfamily.org/index.php?title=Main_Page) libraries and place them in the folder `lib`. The user should have `Cmake` and `make` installed to build /compile, and numpy and matplotlib to plot the solution.<br />
 For unit tests, the solution obtained by each of the methods for Dahlquist's equation was compared with its analytical solution. If the numerical solution is within a tolereance value(which is specified in the test) then the test returns `PASSED`
 
 ## Steps to build/compile project
