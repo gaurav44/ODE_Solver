@@ -3,7 +3,7 @@
 Base_ODE::Base_ODE(const double dt, const double t_start, const double t_end,
                    Eigen::VectorXd y_0, int f)
     : _dt{dt}, _t_start{t_start}, _t_end{t_end}, _y_0{y_0},
-      _n{(_t_end - _t_start) / _dt + 1}, _m{y_0.rows()}, flag{f} {
+      _n{static_cast<int>((_t_end - _t_start) / _dt + 1)}, _m{y_0.rows()}, flag{f} {
   sol.resize(_m, _n);
   sol(Eigen::seq(0, Eigen::last), 0) =
       _y_0; // copy the initial value y_0 into the first column
