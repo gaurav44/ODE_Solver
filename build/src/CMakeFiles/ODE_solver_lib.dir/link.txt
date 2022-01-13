@@ -1,2 +1,0 @@
-/usr/bin/ar qc libODE_solver_lib.a  CMakeFiles/ODE_solver_lib.dir/base_ode.cpp.o CMakeFiles/ODE_solver_lib.dir/exp_euler.cpp.o CMakeFiles/ODE_solver_lib.dir/imp_euler.cpp.o CMakeFiles/ODE_solver_lib.dir/main.cpp.o CMakeFiles/ODE_solver_lib.dir/rhs_func.cpp.o CMakeFiles/ODE_solver_lib.dir/rk2.cpp.o CMakeFiles/ODE_solver_lib.dir/rk4.cpp.o
-/usr/bin/ranlib libODE_solver_lib.a
