@@ -14,7 +14,7 @@ for i in range(0,row,1):
     for j in range(0,col,1):
         sol[i,j] = csvReader[i][j]           
 
-plt.plot(t,sol[:,0])           
-plt.plot(t,sol[:,1])           #comment this for dahlquist 
-# plt.plot(sol[:,0],sol[:,1])  # uncomment this for vdpo
+# plt.plot(t,sol[:,0])           
+# plt.plot(t,sol[:,1])           #comment this for dahlquist 
+plt.plot(sol[:,0],sol[:,1])  # uncomment this for vdpo
 plt.show()

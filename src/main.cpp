@@ -23,21 +23,21 @@ int main() {
   //   trial->write_sol();
 
   // Population model peaceful neighbour
-  Eigen::VectorXd y_0(2);
-  y_0(0) = 0.5;
-  y_0(1) = 3;
-  std::unique_ptr<Base_ODE> trial = std::make_unique<RK2>(0.1, 0, 20, y_0);
-  trial->solve();
-  trial->write_sol();
-
-  // Damped Pendulum
   // Eigen::VectorXd y_0(2);
-  // y_0(0) = 1;
-  // y_0(1) = -1;
-  // std::unique_ptr<Base_ODE> trial = std::make_unique<RK4>(0.1, 0, 20, y_0);
-
+  // y_0(0) = 0.5;
+  // y_0(1) = 3;
+  // std::unique_ptr<Base_ODE> trial = std::make_unique<RK2>(0.1, 0, 20, y_0);
   // trial->solve();
   // trial->write_sol();
+
+  // Damped Pendulum
+  Eigen::VectorXd y_0(2);
+  y_0(0) = 1;
+  y_0(1) = -1;
+  std::unique_ptr<Base_ODE> trial = std::make_unique<RK4>(0.1, 0, 20, y_0);
+
+  trial->solve();
+  trial->write_sol();
 
   // Van der Poll Oscillator
   // Eigen::VectorXd y_0(2);

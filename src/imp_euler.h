@@ -9,18 +9,15 @@
 #include "rhs_func.h"
 
 class imp_euler : public Base_ODE {
-  friend Eigen::VectorXd rhs(const Eigen::VectorXd &y, double t);
-  friend Eigen::VectorXd test(const Eigen::VectorXd &y, double t);
-
   Eigen::MatrixXd dG(const Eigen::VectorXd &v, double t);
   Eigen::VectorXd G(const Eigen::VectorXd &y_curr,
                     const Eigen::VectorXd &y_prev, double t);
 
-public:
+ public:
   imp_euler(const double, const double, const double, Eigen::VectorXd,
             int f = 1);
   void solve() override;
   virtual ~imp_euler() = default;
 };
 
-#endif // IMP_EULER_H_
+#endif  // IMP_EULER_H_

@@ -9,9 +9,7 @@
 #include "rhs_func.h"
 
 class RK4 : public Base_ODE {
-  friend Eigen::VectorXd rhs(const Eigen::VectorXd &y, double t);
-
-public:
+ public:
   RK4(const double, const double, const double, Eigen::VectorXd, int f = 1);
   void solve() override;
 };

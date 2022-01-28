@@ -9,9 +9,7 @@
 #include "rhs_func.h"
 
 class exp_euler : public Base_ODE {
-  friend Eigen::VectorXd rhs(const Eigen::VectorXd &y, double t);
-
-public:
+ public:
   exp_euler(const double, const double, const double, Eigen::VectorXd,
             int f = 1);
   void solve() override;

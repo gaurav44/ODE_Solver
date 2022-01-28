@@ -1,1 +1,1 @@
-Open terminal here and run run cmake .. && make
+/home/gaurav/Downloads/googletest

@@ -38,7 +38,7 @@ def animate(i):
     return (line, dot)
 
 anim = FuncAnimation(fig, animate, init_func=init,
-                               frames=601, interval=20, blit=True)
+                               frames=201, interval=100, blit=True)
 
 # anim.save('pend.gif', writer='imagemagick')
 plt.show()
