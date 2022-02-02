@@ -8,8 +8,6 @@
 #include "../lib/eigen-3.4-rc1/Eigen/Dense"
 
 class Base_ODE {
-  // friend Eigen::VectorXd rhs(const Eigen::VectorXd &y, double t);
-
  protected:
   const double _dt;
   const double _t_start;
@@ -23,8 +21,6 @@ class Base_ODE {
  public:
   Base_ODE(const double, const double, const double, Eigen::VectorXd,
            int f = 1);
-  // Eigen::VectorXd rhs(const Eigen::VectorXd &y, const double t = 0) const;
-  // Eigen::MatrixXd drhs(const Eigen::VectorXd &y, const double t = 0) const;
   void write_sol() const;
   virtual void solve() = 0;
   Eigen::MatrixXd get_sol();
