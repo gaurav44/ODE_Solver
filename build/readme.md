@@ -1,2 +1,2 @@
-run cmake in this directory
+open terminal here & run cmake .. && make 
 
