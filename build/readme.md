@@ -1,1 +1,2 @@
-/home/gaurav/Downloads/googletest
+run cmake in this directory
+
