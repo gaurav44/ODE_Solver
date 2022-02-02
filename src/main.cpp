@@ -1,5 +1,8 @@
+#include <unistd.h>
+
 #include <chrono>
 #include <cmath>
+#include <filesystem>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
@@ -21,7 +24,12 @@ int main() {
   Eigen::VectorXd y_0;
   int choice;
 
-  std::ifstream ipfile("input.txt");
+  char temp[256];
+  getcwd(temp, 256);
+  std::string s(temp);
+  std::string s2 = s.substr(0, s.length() - 4);
+
+  std::ifstream ipfile(s2 + "/input.txt");
   if (ipfile.is_open()) {
     ipfile >> dt >> t_start >> t_end >> num_rows;
     y_0.resize(num_rows);
@@ -32,7 +40,7 @@ int main() {
     }
     ipfile >> choice;
   } else {
-    std::cout << "Unable to open file";
+    std::cout << "Unable to open file\n";
   }
   std::chrono::time_point<std::chrono::system_clock> start;
   std::chrono::time_point<std::chrono::system_clock> end;
