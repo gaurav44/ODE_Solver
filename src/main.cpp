@@ -24,12 +24,7 @@ int main() {
   Eigen::VectorXd y_0;
   int choice;
 
-  char temp[256];
-  getcwd(temp, 256);
-  std::string s(temp);
-  std::string s2 = s.substr(0, s.length() - 4);
-
-  std::ifstream ipfile(s2 + "/input.txt");
+  std::ifstream ipfile("../input.txt");
   if (ipfile.is_open()) {
     ipfile >> dt >> t_start >> t_end >> num_rows;
     y_0.resize(num_rows);
