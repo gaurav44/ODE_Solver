@@ -16,7 +16,7 @@ protected:
   const double _t_end;
   const Eigen::VectorXd _y_0;
   const int _n;
-  const long int _m;
+  const int _m;
   Eigen::MatrixXd sol;
   int flag; // 0 for test, 1 for normal
 
