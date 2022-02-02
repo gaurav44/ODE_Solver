@@ -1,4 +1,4 @@
-# Sprint 2
+# Sprint 3
 
 ## Overview
 This repository consists of C++ code for solving system ODEs by 4 methods.<br />
@@ -22,13 +22,11 @@ For unit tests, the solution obtained by each of the methods for Dahlquist's equ
 1) The solver numerically solves the ODE `y' = f(y, t)`. f(y, t) is referred as rhs and its Jacobian as drhs(required only for Implicit Euler)
 2) The user needs to define the rhs in `rhs_func.cpp` with the function signature as `Eigen::VectorXd rhs(const Eigen::VectorXd &y, const double t)`.
 In case the user wants to use Implicit Euler method, the drhs function needs to be defined with function signature as `Eigen::MatrixXd drhs(const Eigen::VectorXd &y, double t)`
-3) In `main.cpp` first, define the `Eigen::VectorXd` containing the initial values of y.
-4) Since `Base_ODE` is the interface class, define a unique pointer of type `Base_ODE` pointing to an object of desired method class. Pass dt, t_start, t_end , y_0 to the constructor.
-
-For eg: `std::unique_ptr<Base_ODE> trial = std::make_unique<RK2>(0.1, 0, 20, y_0);`
-
-5) To solve the ODE by your chosen method, call the overridden solve() method as `trial->solve();`
-6) To write the solution to file, call the write_sol() method as `trial->write_sol()`
+3) In the `input.txt` provided in the build folder, put the values of dt, t_start, t_end, length of vector of initial values, initial values and method choice seperated by a whitespace in that specific order. <br />
+Choice 1 for Explicit Euler<br />
+Choice 2 for RK2<br />
+Choice 3 for RK4<br />
+Choice 4 for Implicit Euler<br />
 
 ## Additional note
 There are 4 examples already included in `main.cpp`.  They are as follows:
